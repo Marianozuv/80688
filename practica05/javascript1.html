@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+
+    
+    function cambiarColor(color) {
+        console.log("Color recibido: ",color);
+        var e=document.getElementById("Titulo1");
+        e.style.color=color;
+    }
+
+    function cambiarColorTag(color){
+        var c= document.getElementsByTagName("h1");
+        for (let index = 0; index < c.length; index++) {
+            c[index].style.color=color;
+        }        
+    }
+
+   /* function cambiarColores(color){
+        var t = document.getElementsByTagName("h1");
+        t.forEach(element => console.log(element) {
+            console.log(element);
+            element.style.color = color;
+        });
+    }*/
+    
+    function cambiar(color){
+        var c = document.getElementsByTagName("h1");
+        for (const x in c) {
+            if (Object.hasOwnProperty.call(c, x)) {
+                const element = c[x].style.color=color;
+            }
+        }
+    }
+
+    function cambiarC(color){
+        var c=document.getElementsByName("h1");
+        for (const x in c){
+            //if (Object.hasOwnProperty.call(c,x));
+            if(c.hasOwnProperty(x)){
+                const element = c[x].style.color=color="Green";
+            }
+        }
+    }
+
+   /* let i=0;
+    for (cosnt x in c){
+        if(i<c.length){
+            c[p].style.color=color="green";
+            i++;
+        }
+    }*/
+
+//for (let x in 03){console.log(o3[x3].forEach(e=>console.log(e)))}
+
+</script>
+<body>
+    <h1 id="Titulo1">Este es un titulo 1</h1>
+    <h1 id="Titulo2">Este es un titulo 2</h1>
+    <h1 id="Titulo3">Este es un titulo 3</h1>
+    <h1 id="Titulo4">Este es un titulo 4</h1>
+    
+    
+    <button onclick="cambiarColorTag('Red')" >Rojo</button>
+    <button onclick="cambiarColorTag('Blue')" >Azul</button>
+    <button onclick="cambiarC('Green')" >Verde</button>
+
+</body>
+</html>
