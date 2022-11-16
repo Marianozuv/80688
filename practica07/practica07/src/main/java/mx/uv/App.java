@@ -15,8 +15,14 @@ public class App {
 
     public static Gson gson = new Gson();
     private static Map<String, Usuario> usuarios = new HashMap<>();
+    private static Conexion c;
 
     public static void main(String[] args) {
+
+        //Intentar conectar a la BD
+        c= new Conexion();
+        c.getConnection();
+
         port(80);
         System.out.println("Hello World!");
         Usuario u1 = new Usuario("1", "Pedro", "1234");
@@ -29,14 +35,17 @@ public class App {
         // devolver un usuario
         // get("/", (req, res) -> gson.toJson(u1) ); 
         // devolver lista de usuarios
-        get("/", (req, res) -> gson.toJson(usuarios) );
+        //get("/", (req, res) -> gson.toJson(usuarios) );
+        get("/", (req, res) -> gson.toJson(DAO.dameUsuarios()) );
         // get("/", (req, res) -> u1.getNombre() );
 
         post("/", (req,res)->{
             String datosCliente = req.body();
             Usuario u = gson.fromJson(datosCliente, Usuario.class);
-            usuarios.put(u.getId(), u);
-            return "listo se ingreso el usuario "+u.getId();
+            //usuarios.put(u.getId(), u);
+            //return "listo se ingreso el usuario "+u.getId();
+            return DAO.crearUsuario(u);
+
         });
 
 
